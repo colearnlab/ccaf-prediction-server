@@ -76,13 +76,18 @@ while True:
                 clip_df = df[df.timestamp > clip_start_ms]
                 features = extract_features.extract_features(clip_df, len(pid_map), possible_events)
             except Exception as e:  # Something very unexpected in log file
-                verbose_print('Skipping' + fname + 'due to parsing error')
+                verbose_print('Skipping ' + log_file + ' due to clip parsing error')
                 verbose_print(e)
                 continue
             features['start_sec_into_log'] = (clip_start_ms - df.timestamp.iloc[0]) / 1000
             # Extract cumulative features.
             verbose_print('Extracting cumulative features')
-            cum_features = extract_features.extract_features(df, len(pid_map), possible_events)
+            try:
+                cum_features = extract_features.extract_features(df, len(pid_map), possible_events)
+            except Exception as e:
+                verbose_print('Skipping ' + log_file + ' due to cumulative parsing error')
+                verbose_print(e)
+                continue
             for k, v in cum_features.items():
                 features['cum_' + k] = v
 
