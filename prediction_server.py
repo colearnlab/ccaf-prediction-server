@@ -31,7 +31,7 @@ args = parser.parse_args()
 
 def verbose_print(msg):
     if args.verbose:
-        print(msg)
+        print(int(time.time() * 1000), msg)
 
 
 # Load any required files (models, etc.) in advance
