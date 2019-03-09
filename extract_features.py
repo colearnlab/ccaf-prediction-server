@@ -18,6 +18,8 @@ def extract_features(df, num_students, possible_events):
         df['object_top'] = df['object_left'] = df['object_path_length'] = df['object_height'] = \
             df['object_width'] = np.nan
         df['object_type'] = ''
+    if 'scroll_pos' not in df.columns:  # Never scrolling causes issues
+        df['scroll_pos'] = 0
     result = OrderedDict({
         'num_rows': len(df),
         'prop_students_acting': len(df.student_id.unique()) / num_students,
