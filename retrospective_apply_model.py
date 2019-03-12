@@ -3,6 +3,7 @@
 import argparse
 import pickle
 import warnings
+import re
 from collections import OrderedDict
 
 import pandas as pd
@@ -44,7 +45,7 @@ for clip_start_ms in tqdm(range(df.timestamp.iloc[0], df.timestamp.iloc[-1],
                           args.prediction_interval * 1000)):
     clip_end_ms = clip_start_ms + extract_features.CLIP_LEN_MS - 1
     result.append(OrderedDict({
-        'source_log_file': args.log_file,
+        'source_log_file': re.sub(r'.*/', '', args.log_file),
         'clip_start_ms': clip_start_ms,
         'clip_end_ms': clip_end_ms,
         'minutes_since_start': '%.3f' % ((clip_start_ms - df.timestamp.iloc[0]) / 1000 / 60)
