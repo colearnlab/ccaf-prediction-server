@@ -13,7 +13,7 @@ import parse_raw_logs
 import extract_features
 
 
-DATA_DIR = './'  # Can change for testing if needed.
+DATA_DIR = 'models/'  # Can change for testing if needed.
 MODEL_LABELS = ['code_ontask', 'code_ontasknoint', 'code_peerint', 'code_tasktalk', 'code_silent',
                 'code_taclass']
 OUTPUT_FEATURES = ['prop_students_acting', 'ratio_2ndmost_to_most_active']
@@ -24,7 +24,7 @@ parser.add_argument('logfile_dir', help='Path to directory with the CSTEPS log f
 parser.add_argument('max_files', help='Maximum number of log files to consider (the newest)',
                     type=int)
 parser.add_argument('max_age_minutes', help='Maximum age of log files to consider', type=int)
-parser.add_argument('output_file', help='Path to output file, which will be regularly overwritten')
+parser.add_argument('output_file', help='Path to output JSON file (will be regularly overwritten)')
 parser.add_argument('-v', '--verbose', help='Print logging info to STDOUT', action='store_true')
 args = parser.parse_args()
 

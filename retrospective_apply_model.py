@@ -32,11 +32,11 @@ print('Loading models and data')
 models = {}
 for label in MODEL_LABELS:
     models[label] = {}
-    with open('model_' + label + '.pkl', 'rb') as infile:
+    with open('models/model_' + label + '.pkl', 'rb') as infile:
         models[label]['model'] = pickle.load(infile)
-    with open('model_' + label + '-features.txt') as infile:
+    with open('models/model_' + label + '-features.txt') as infile:
         models[label]['features'] = infile.readline().split(',')
-possible_events = pd.read_csv('all_possible_events.csv').event_type.values
+possible_events = pd.read_csv('models/all_possible_events.csv').event_type.values
 df, pid_map = parse_raw_logs.parse_logfile(args.log_file)  # JSON -> pandas DataFrame
 
 print('Making predictions')
