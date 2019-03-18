@@ -13,12 +13,12 @@ Clone this repository to the machine running _ccaf-web_, and install the prerequ
 
 A typical command to run the prediction server looks like this:
 
-`nohup python3 prediction_server.py ../ccaf-web/stores 8 10 ../ccaf-web/prediction_server/ml_predictions.json --verbose &`
+`nohup python3 -u prediction_server.py ../ccaf-web/stores 8 10 ../ccaf-web/prediction_server/ml_predictions.json --verbose &`
 
 Where:
 
 * `nohup` means run without closing after the current SSH session ends
-* `python3 prediction_server.py` means run the prediction server Python script
+* `python3 -u prediction_server.py` means run the prediction server Python script, writing output to nohup.out immediately (`-u` means unbuffered)
 * `../ccaf-web/stores` is the folder where the CCAF stores (per-group log files) are written
 * `8` is the maximum number of groups to make predictions for
 * `10` is the maximum number of minutes since the last action before a log file will be ignored
