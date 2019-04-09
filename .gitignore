@@ -1,6 +1,6 @@
 nohup.out
-*.json
-*.logfile
+test_*.json
+test_*.logfile
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
