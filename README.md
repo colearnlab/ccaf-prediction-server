@@ -31,8 +31,9 @@ Information about options for the prediction server can be found by running `pyt
 
 There isn't a polite way to stop the server, so you will have to simply kill it.
 
-1. Discover the process ID by running `ps aux | grep prediction_server'; if it is running you might see something like:
+1. Discover the process ID by running `ps aux | grep prediction_server`; if it is running you might see something like:
     * `pnb     124235 15.0  2.4 676904 196832 pts/1   S    14:54   0:01 python3 prediction_server.py ../ccaf-web/stores 8 10 ../ccaf-web/prediction_server/ml_predictions.json --verbose`
     * The second field, `124235` in this case, is the process ID
+    * If it is not running, you will not see anything about python3 when you run the command
 2. Kill the process: `kill 124235`
     * If the process was started by another user, you may have to prepend the `kill` command with `sudo `
