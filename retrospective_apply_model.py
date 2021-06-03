@@ -12,12 +12,7 @@ from tqdm import tqdm
 
 import parse_raw_logs
 import extract_features
-
-
-# TODO: import prediction_server and get values from there
-MODEL_LABELS = ['code_ontask', 'code_ontasknoint', 'code_peerint', 'code_tasktalk', 'code_silent',
-                'code_taclass']
-OUTPUT_FEATURES = ['prop_students_acting', 'ratio_2ndmost_to_most_active']
+from prediction_server import MODEL_LABELS, OUTPUT_FEATURES
 
 
 parser = argparse.ArgumentParser()
