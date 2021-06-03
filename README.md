@@ -4,10 +4,16 @@
 
 Clone this repository to the machine running _ccaf-web_, and install the prerequisites. The prerequisites are:
 
-* Python 3.5, 3.6, or 3.7
-* _pandas_, _scikit-learn_, and _tqdm_ packages, which can be installed with:
-    * `pip3 install pandas scikit-learn tqdm`
-    * If you need to install these packages for all users, prepend `sudo -H ` to the `pip3` command
+* Python 3.7
+* _pandas_, _scikit-learn_, and _tqdm_ packages
+
+Versions are continually changing, and the trained models may not work with new versions. Hence there is a conda specification file that should install the right versions. Use it like:
+
+    conda env create -f csteps2apply-conda-env.yaml
+
+Then, when it's time to use it, activate the environment before running Python:
+
+    conda activate csteps2apply
 
 ## Running the prediction server
 
