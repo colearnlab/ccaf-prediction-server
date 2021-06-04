@@ -13,6 +13,10 @@ if [ -z "$2" ]; then
     echo "Please specify a prediction interval in seconds (e.g., 20)"
     exit
 fi
+if [ -z `which python3 | grep csteps2apply` ]; then
+    echo "This should be run from the csteps2apply conda environment"
+    exit
+fi
 
 for fname in `find "$in_dir" -name '*.logfile'`; do
     echo "Processing $fname"
