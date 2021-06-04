@@ -1,5 +1,5 @@
 # Take a trained model and retrospectively apply it to a log file, to allow examination of
-# predictions
+# predictions. Can be applied recursively via `retrospective_run.sh`.
 import argparse
 import pickle
 import warnings
