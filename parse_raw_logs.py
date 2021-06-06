@@ -66,7 +66,8 @@ def parse_line(line, source_file, studentid_netid_map, object_data):
             else:
                 raise ValueError('Unknown value of "objects" event_type')
             row['object_type'] = data['type'] if 'type' in data else \
-                object_data[row['object_id']]['type']
+                object_data[row['object_id']]['type'] if row['object_id'] in object_data else \
+                'unknown_type'
 
             if 'top' in data and data['top'] is not None:  # Record size/position.
                 data['width'] = data['width'] if data['width'] else 0
@@ -101,7 +102,7 @@ def parse_line(line, source_file, studentid_netid_map, object_data):
                     if k.startswith('object_'):
                         object_data[row['object_id']][k] = row[k]
 
-            if row['event_type'] == 'remove_object':
+            if row['event_type'] == 'remove_object' and row['object_id'] in object_data:
                 # Add in position/scale/etc. at time of removal.
                 prev = object_data[row['object_id']]
                 for k in prev:
