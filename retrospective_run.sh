@@ -20,6 +20,10 @@ fi
 
 for fname in `find "$in_dir" -name '*.logfile'`; do
     echo "Processing $fname"
+    if [ -f "$fname-predictions.csv" ]; then
+        echo "Output already exists; skipping"
+        continue
+    fi
     echo "Output will be $fname-predictions.csv"
     # Having `|| exit` here allows for Ctrl+C to stop the whole script
     python3 retrospective_apply_model.py "$fname" $2 "$fname-predictions.csv" || exit
